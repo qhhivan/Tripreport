@@ -5,7 +5,7 @@ const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const cors = require('cors');
 
-const routes = require('./routes/simple2train');
+const routes = require('./routes/tripreport');
 
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
