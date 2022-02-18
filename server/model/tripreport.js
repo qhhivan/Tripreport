@@ -10,6 +10,7 @@ const getAttractions = async () => {
   const { rows } = await db.query('SELECT');
   return rows;
 };
+
 const getTrips = async () => {
   const { rows } = await db.query('SELECT');
   return rows;
@@ -19,38 +20,48 @@ const getPictures = async () => {
   const { rows } = await db.query('SELECT');
   return rows;
 };
+
+const getPicture = async (id) => {
+  const { rows } = await db.query('SELECT', [id]);
+  return rows;
+};
+
+const getTrip = async (id) => {
+  const { rows } = await db.query('SELECT', [id]);
+  return rows;
+};
 // GET ENDE
 
 // DELETE
-const deleteTrip = () => {
-  db.query('SELECT', []);
+const deleteTrip = (id) => {
+  db.query('DELETE', [id]);
   return 'Trip ID Erfolgreich gelöscht';
 };
 
-const deletePicture = () => {
-  db.query('SELECT', []);
+const deletePicture = (id) => {
+  db.query('DELETE', [id]);
   return 'Trip ID Erfolgreich gelöscht';
 };
 // DELETE ENDE
 
 // POST/ Hinzufügen
-const postTrip = async () => {
-  const { rows } = await db.query('SELECT', []);
+const postTrip = async (id, { properties }) => {
+  const { rows } = await db.query('INSERT', [id, properties]);
   return rows;
 };
 
-const postPicture = async () => {
-  const { rows } = await db.query('SELECT', []);
+const postPicture = async (id, { properties }) => {
+  const { rows } = await db.query('INSERT', [id, properties]);
   return rows;
 };
 // POST ENDE
 
 // PATCH/ UPDATE
 // Patch  Trip-Name
-async function patchTrip() {
-  await db.query('SELECT', []);
+const patchTrip = async (id, { properties }) => {
+  await db.query('UPDATE', [id, properties]);
   return 'Update Erfolgreich';
-}
+};
 // PATCH ENDE
 
 module.exports = {
@@ -58,6 +69,8 @@ module.exports = {
   getAttractions,
   getTrips,
   getPictures,
+  getPicture,
+  getTrip,
   deleteTrip,
   deletePicture,
   postTrip,
