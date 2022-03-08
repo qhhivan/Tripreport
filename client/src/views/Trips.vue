@@ -1,12 +1,16 @@
 <template>
-    <div>
-        Hier kommen alle Trips hin
-    </div>
+  <div>
+    Hier kommen alle Trips hin
+    <TripsCard />
+  </div>
 </template>
 
 <script>
-    export default {
-      name: "Trips",
-        
-    }
+import TripsCard from '@/components/TripsCard.vue';
+export default {
+  name: 'Trips',
+  components: {
+    TripsCard,
+  },
+};
 </script>
